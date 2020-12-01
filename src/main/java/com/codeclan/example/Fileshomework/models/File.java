@@ -1,7 +1,6 @@
 package com.codeclan.example.Fileshomework.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.graalvm.compiler.lir.CompositeValue;
 
 import javax.persistence.*;
 import java.nio.file.Files;
