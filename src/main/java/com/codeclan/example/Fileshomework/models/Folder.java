@@ -21,8 +21,19 @@ public class Folder {
     @JsonIgnoreProperties({"folders"})
     private User user;
 
-    public Folder(String title) {
+
+
+    public Folder(String title, User user) {
         this.title = title;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTitle() {
@@ -31,5 +42,13 @@ public class Folder {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
