@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping(value = "/users/{id}")
     public ResponseEntity<Optional<User>> getUser(@PathVariable Long id){
-        return new ResponseEntity<>(userRepository.findById(id));
+        return new ResponseEntity<Optional<User>>(userRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/users")
