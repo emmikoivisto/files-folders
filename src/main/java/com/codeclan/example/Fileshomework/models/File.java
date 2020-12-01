@@ -1,14 +1,54 @@
 package com.codeclan.example.Fileshomework.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.graalvm.compiler.lir.CompositeValue;
+
+import javax.persistence.*;
+import java.nio.file.Files;
+
+@Entity
+@Table(name="files")
+
 public class File {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="extension")
     private String extension;
+
+    @Column(name="size")
     private int size;
 
-    public File(String name, String extension, int size) {
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    @JsonIgnoreProperties({"files"})
+    private Folder folder;
+
+    public File(String name, String extension, int size, Folder folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
+        this.folder = folder;
+    }
+
+    public Folder getFolder() {
+        return folder;
+    }
+
+    public void setFolder(Folder folder) {
+        this.folder = folder;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public File(){
